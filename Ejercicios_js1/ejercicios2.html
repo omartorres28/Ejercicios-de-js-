@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Solicitud de préstamo bancario</title>
+</head>
+<body>
+	<h1>Solicitud de préstamo bancario</h1>
+
+	<form>
+		<label for="nombre">Nombre:</label>
+		<input type="text" id="nombre" name="nombre"><br><br>
+
+		<label for="ingreso">Ingreso mensual:</label>
+		<input type="number" id="ingreso" name="ingreso"><br><br>
+
+		<label for="deuda">Posee alguna deuda:</label>
+		<input type="radio" id="deudaSi" name="deuda" value="si">
+		<label for="deudaSi">Sí</label>
+		<input type="radio" id="deudaNo" name="deuda" value="no">
+		<label for="deudaNo">No</label><br><br>
+
+		<button type="button" onclick="verificarPrestamo()">Verificar préstamo</button>
+	</form>
+
+	<p id="resultado"></p>
+
+	<script>
+		function verificarPrestamo() {
+			let nombre = document.getElementById("nombre").value;
+			let ingreso = document.getElementById("ingreso").value;
+			let deuda = document.querySelector('input[name="deuda"]:checked').value;
+
+			if (ingreso > 945200 && deuda == "no") {
+				document.getElementById("resultado").innerHTML = "Felicidades " + nombre + ", se le otorgará el préstamo.";
+			} else {
+				document.getElementById("resultado").innerHTML = "Lo siento " + nombre + ", no es elegible para el préstamo.";
+			}
+		}
+	</script>
+</body>
+</html>

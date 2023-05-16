@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora de precios de venta</title>
+</head>
+<body>
+	<h1>Calculadora de precios de venta</h1>
+	<label for="costo">Costo del artículo:</label>
+	<input type="number" id="costo">
+	<button onclick="calcularPrecio()">Calcular precio de venta</button>
+	<p id="precio-venta"></p>
+
+	<script>
+		function calcularPrecio() {
+			const costo = parseFloat(document.getElementById("costo").value);
+
+			let ganancia;
+			if (costo < 3000) {
+				ganancia = costo * 0.15;
+			} else if (costo >= 3000 && costo <= 6000) {
+				ganancia = 500;
+			} else {
+				ganancia = costo * 0.25;
+			}
+
+			const precioVenta = costo + ganancia;
+			document.getElementById("precio-venta").innerText = `El precio de venta es: $${precioVenta.toFixed(2)}`;
+		}
+	</script>
+</body>
+</html>
