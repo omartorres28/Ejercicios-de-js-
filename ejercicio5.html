@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora de gasto de agua</title>
+</head>
+<body>
+	<h1>Calculadora de gasto de agua</h1>
+	<form>
+		<label for="m2">Número de m2 de agua gastados:</label>
+		<input type="number" id="m2" name="m2">
+		<button type="button" onclick="calcularGasto()">Calcular</button>
+	</form>
+	<p id="resultado"></p>
+
+	<script>
+		function calcularGasto() {
+			let m2 = parseInt(document.getElementById("m2").value);
+			let gasto = 10000; // Cuota fija mensual
+			if (m2 > 50 && m2 <= 200) {
+				gasto += (m2 - 50) * 2000; // Se cobra $2000 por m2 entre 50 y 200 m2
+			} else if (m2 > 200) {
+				gasto += (200 - 50) * 2000 + (m2 - 200) * 3000; // Se cobra $3000 por m2 a partir de 200 m2
+			}
+			document.getElementById("resultado").innerHTML = "El gasto de agua es: $" + gasto;
+			console.log("El gasto de agua es: $" + gasto);
+			pythonCalcularGasto(m2);
+		}
+	</script>
+
+	<script type="text/python">
+		import javascript
+		def pythonCalcularGasto(m2):
+		    gasto = 10000 # Cuota fija mensual
+		    if m2 > 50 and m2 <= 200:
+		        gasto += (m2 - 50) * 2000 # Se cobra $2000 por m2 entre 50 y 200 m2
+		    elif m2 > 200:
+		        gasto += (200 - 50) * 2000 + (m2 - 200) * 3000 # Se cobra $3000 por m2 a partir de 200 m2
+		    print("El gasto de agua es: $" + str(gasto))
+		    javascript.console.log("El gasto de agua es: $" + str(gasto))
+	</script>
+
+</body>
+</html>
